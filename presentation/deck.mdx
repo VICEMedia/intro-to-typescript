@@ -1,0 +1,230 @@
+export { default as theme } from './theme';
+
+import { CodeSurfer } from 'mdx-deck-code-surfer';
+
+# Before we get started
+
+Make sure you have a recent version of Node.js (v8.x+) installed (we recommend using [NVM](https://github.com/creationix/nvm) to update to a recent version)
+
+Install [VS Code](https://code.visualstudio.com/) or a TypeScript Intellisense plugin for your favorite text editor.
+
+```bash
+$ git clone github.com/VICEMedia/intro-to-typescript
+$ cd intro-to-typescript
+$ npm install
+$ brew update
+$ brew install mongodb
+```
+
+---
+
+# Your Instructors
+
+CJ DiMaggio
+
+CJ Leth
+
+George Bajuscik
+
+Jiaqi Liu
+
+Jessie Schalles
+
+Nolan Leung
+
+Paul Fielek
+
+---
+
+# Introduction to TypeScript
+
+<div>
+  <img
+    src="http://static-38.sinclairstoryline.com/resources/media/ed757400-735a-47d6-88e8-94d3243ffd45-7853125_G.jpg?1440651900354"
+    width="300px"
+  />
+  <br />
+  <img
+    src="https://vice-web-statics-cdn.vice.com/logos/vice_logo_black.svg"
+    width="300px"
+  />
+</div>
+
+---
+
+# TypeScript
+
+TypeScript is a transpiled programming language that adds a type system to JavaScript.
+
+---
+
+<CodeSurfer
+  title='TypeScript -> JavaScript transpilation'
+  code={ require('!raw-loader!./snippets/transpilation-example.ts' )}
+  lang='typescript'
+  steps={[
+    { range: [1, 19], notes: 'TypeScript code' },
+    { range: [21, 31], notes: 'Transpiled JavaScript code' },
+  ]}
+/>
+
+---
+
+# Benefits
+
+---
+
+<CodeSurfer
+  title='Compile Time Checks'
+  code={ require('!raw-loader!./snippets/compiler-error.ts') }
+  lang='typescript'
+  steps={[
+    { notes: 'Before your code can be run by a JavaScript engine, it needs to be transpiled from TypeScript to JavaScript.', lines: [1, 2] },
+    { notes: 'During this process, the transpiler performs type checks and will throw an error if anything looks off.', lines: [4] },
+  ]}
+/>
+---
+
+## Intellisense
+
+<!-- TODO add a screen capture gif -->
+
+---
+
+## Collaboration
+
+When working on larger projects, not all members of a team may have complete knowledge of the codebase. TypeScript helps contributors glean the input and output of a function and infer what a data structure should look like in order for a part of the application to function properly.
+
+---
+
+# Drawbacks
+
+* Transpiled JavaScript
+* Additional overhead when writing code
+* Additional overhead when debugging code
+
+---
+
+# This lesson will cover
+
+* the type system & type annotations
+* type inference
+* writing & implementing interfaces
+* any types & type assertions
+* using npm to fetch type definitions for a package
+* creating an Express app from the ground up using TypeScript
+
+---
+
+# The Type System
+
+---
+
+<CodeSurfer
+  title='Common types'
+  code={ require('!raw-loader!./snippets/types-example.ts') }
+  lang='typescript'
+  steps={[
+    { notes: 'Common types' },
+    { lines: [1, 2], notes: 'boolean' },
+    { lines: [4, 5, 6, 7], notes: 'number' },
+    { lines: [9, 10], notes: 'string' },
+    { lines: [12, 13], notes: 'array' },
+  ]}
+/>
+
+---
+
+# Type inference
+
+The TypeScript compiler will predict the type annotations for a given variable based upon possible values for that variable
+
+```notes
+This slide should inclide a short live demo of type inference in action
+```
+
+---
+
+# Interfaces
+
+Interfaces are used to describe the structure of an object.
+
+Interfaces can be implemented by classes or by objects.
+
+---
+
+# Writing and implementing an interface
+
+```notes
+This is a live coding section
+```
+
+---
+
+# What is an 'any' type?
+
+An `any` type is used to describe the type of a variable that we are unsure of at the time of writing.
+
+`any` is helpful when migrating an existing JavaScript application onto TypeScript.
+
+---
+
+# NPM packages and @types
+
+Type annotations for NPM packages can be downloaded by using the `@types/` prefix. Let's use [request promise native](https://github.com/request/request-promise-native) as an example
+
+```bash
+$ npm install --save request
+$ npm install --save request-promise-native
+$ npm install --save @types/request-promise-native
+```
+
+```notes
+This slide should include a quick live demo of the downloaded types working in VS Code
+```
+
+---
+
+# Let's make an Express app
+
+* write index and show routes
+* add query parameters for pagination `?page=1&per_page=10`
+* add a search query parameter `?search=dr`
+* add POST, PUT, and DELETE routes for monsters
+* BONUS: add unit tests
+
+```notes
+This slide will be a code-along in which we get the basic application set up, and then students will go off and work on their own
+
+Install dependencies
+
+npm init
+npm install --save typescript
+npm install --save express
+
+mkdir src
+touch src/app.ts
+
+Start writing app.get and pause to get type annotations
+
+npm install --save-dev @types/express
+
+Finish writing app.get with a simple 'Hello' response and add app.listen
+
+Setup tsconfig.json and then package.json start command
+
+npm install --save-dev nodemon
+touch nodemon.json
+
+Update package.json to use the nodemon config
+
+Setup database connection
+```
+
+---
+
+# Thanks for attending
+
+We really value your feedback! Please take a minute to fill out this form:
+
+[bit.ly/wwc-vice-ts-intro](https://bit.ly/wwc-vice-ts-intro)

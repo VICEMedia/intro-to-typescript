@@ -1,0 +1,5 @@
+{
+  "ignore": ["node_modules"],
+  "exec": "tsc && node build/app.js",
+  "ext": "ts"
+}
