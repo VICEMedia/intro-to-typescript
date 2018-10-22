@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "presentation": "mdx-deck presentation/deck.mdx",
-    "ts": "ts-node"
+    "ts": "ts-node --target=es2017"
   },
   "author": "",
   "license": "ISC",
