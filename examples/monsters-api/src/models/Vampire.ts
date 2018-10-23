@@ -1,6 +1,9 @@
 import * as mongoose from 'mongoose';
+import db from '../db';
 import Monster from '../interfaces/Monster';
 import BloodSucker from '../interfaces/BloodSucker';
+
+const vampireModel = db.model('Vampire', new db.Schema({}, { strict: false }))
 
 export default class Vampire implements Monster, BloodSucker {
   name: string;
@@ -16,9 +19,8 @@ export default class Vampire implements Monster, BloodSucker {
     this.pintsConsumed += pints;
   }
 
-  async save(db: mongoose.Connection): Promise<mongoose.Document> {
-    const model = await db.model('Vampire', new mongoose.Schema({}));
-    const document = new model({
+  async save(): Promise<mongoose.Document> {
+    const document = new vampireModel({
       hunger: this.hunger,
     });
 

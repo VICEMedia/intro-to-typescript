@@ -1,14 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import * as mongoose from 'mongoose';
 import Vampire from './models/Vampire';
-
-// Setup database connection and models
-mongoose.connect('mongodb://localhost/monsters');
-const db = mongoose.connection;
-db.on('error', (err) => {
-  console.log(err);
-});
 
 // Initialize app and routes
 const app = express();
@@ -20,7 +12,7 @@ app.get('/', async (req, res) => {
 
 app.post('/vampires', async (req, res) => {
   const vampire = new Vampire(req.body.name);
-  vampire.save(db);
+  await vampire.save().catch(console.error);
   res.send(vampire);
 });
 
