@@ -12,27 +12,19 @@ Install [VS Code](https://code.visualstudio.com/) or a TypeScript Intellisense p
 $ git clone github.com/VICEMedia/intro-to-typescript
 $ cd intro-to-typescript
 $ npm install
-$ brew update
-$ brew install mongodb
 ```
 
 ---
 
 # Your Instructors
 
-CJ DiMaggio
-
-CJ Leth
-
-George Bajuscik
-
-Jiaqi Liu
-
-Jessie Schalles
-
-Nolan Leung
-
-Paul Fielek
+* Aaron Dayalan
+* CJ DiMaggio
+* George Bajuscik
+* Jiaqi Liu
+* Joshua Thomas Wise
+* Nolan Leung
+* Paul Fielek
 
 ---
 
@@ -87,7 +79,10 @@ TypeScript is a transpiled programming language that adds a type system to JavaS
 
 ## Intellisense
 
-<!-- TODO add a screen capture gif -->
+<img
+  src={`${require('path').dirname(require.main.filename)}/images/intellisense.gif`}
+  width='130%'
+/>
 
 ---
 
@@ -151,12 +146,8 @@ Interfaces are used to describe the structure of an object.
 
 Interfaces can be implemented by classes or by objects.
 
----
-
-# Writing and implementing an interface
-
 ```notes
-This is a live coding section
+This is a good opportunity to check familiarity with interfaces
 ```
 
 ---
@@ -166,6 +157,18 @@ This is a live coding section
 An `any` type is used to describe the type of a variable that we are unsure of at the time of writing.
 
 `any` is helpful when migrating an existing JavaScript application onto TypeScript.
+
+```notes
+any can also be a helpful way of getting the transpiler to compile your code while developing a feature
+```
+
+---
+
+# Writing and implementing an interface
+
+```notes
+This is a live coding section
+```
 
 ---
 
@@ -187,11 +190,13 @@ This slide should include a quick live demo of the downloaded types working in V
 
 # Let's make an Express app
 
-* write index and show routes
-* add query parameters for pagination `?page=1&per_page=10`
-* add a search query parameter `?search=dr`
-* add POST, PUT, and DELETE routes for monsters
-* BONUS: add unit tests
+* write a `/roll-call` route that responds with all monsters' names
+* add a `Food` enum and give each monster an array of `foodSources`
+* write a `/:name/feed?foodSource=brains&units=2` route which checks if the food you feed a monster is valid
+* add an `Attack` enum and give each monster an array of `weaknesses`
+* write a `/:name/attack?source=stake` route which checks to see if the monster can be defeated by the attack and deletes it if the attack succeeds
+* BONUS: add unit tests using Mocha/Chai
+* BONUS: save your monsters to MongoDB or a database of your choice
 
 ```notes
 This slide will be a code-along in which we get the basic application set up, and then students will go off and work on their own
@@ -218,7 +223,7 @@ touch nodemon.json
 
 Update package.json to use the nodemon config
 
-Setup database connection
+Setup hashmap of monsters
 ```
 
 ---
@@ -228,3 +233,7 @@ Setup database connection
 We really value your feedback! Please take a minute to fill out this form:
 
 [bit.ly/wwc-vice-ts-intro](https://bit.ly/wwc-vice-ts-intro)
+
+We're also looking for amazing talent to join our engineering team:
+
+[https://grnh.se/or2rumg61](https://grnh.se/or2rumg61)
