@@ -73,7 +73,7 @@ class Zombie implements Monster, Undead, BrainEater {
   }
 }
 
-const attack = (monster: Monster, weakness: Weakness) => {
+function attack(monster: Monster, weakness: Weakness) {
   if (monster.weaknesses.includes(weakness)) {
     console.log(`${monster.name} ${weakness}`);
   } else {

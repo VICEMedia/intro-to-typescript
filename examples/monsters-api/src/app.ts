@@ -1,8 +1,7 @@
-const express = require('express');
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
 import * as mongoose from 'mongoose';
-
-// Schemas
-import { monsterSchema } from './models/Monster';
+import Vampire from './models/Vampire';
 
 // Setup database connection and models
 mongoose.connect('mongodb://localhost/monsters');
@@ -11,14 +10,18 @@ db.on('error', (err) => {
   console.log(err);
 });
 
-db.model('Monster', monsterSchema);
-
 // Initialize app and routes
 const app = express();
 
+app.use(bodyParser.json({ type: 'application/json' }));
+
 app.get('/', async (req, res) => {
-  const monsters = await db.models.Monster.find();
-  res.send(monsters);
+});
+
+app.post('/vampires', async (req, res) => {
+  const vampire = new Vampire(req.body.name);
+  vampire.save(db);
+  res.send(vampire);
 });
 
 app.listen(3000, () => {
