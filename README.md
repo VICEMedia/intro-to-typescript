@@ -11,7 +11,7 @@ It is highly recommended you use a text editor that supports TypeScript intellis
 Clone this repo
 
 ```bash
-$ git clone git@github.com:VICEMedia/intro-to-typescript.git
+$ git clone https://github.com/VICEMedia/intro-to-typescript
 ```
 
 Install dependencies
